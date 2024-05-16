@@ -1,14 +1,14 @@
 integrator               = md
 dt                       = 0.02 
-nsteps                   = 2500000
+nsteps                   = 10000000
 
 nstxout                  = 0   
 nstvout                  = 0
 nstfout                  = 0
 
-nstlog                   = 1000
-nstenergy                = 1000
-nstxout-compressed       = 1000
+nstlog                   = 2500
+nstenergy                = 2500
+nstxout-compressed       = 2500
 
 vdwtype                  = Cut-Off
 cutoff-scheme            = Verlet
@@ -25,16 +25,16 @@ fourierspacing           = 0.12
 DispCorr                 = No
 
 tcoupl                   = v-rescale
-tc-grps                  = DEF_TCGROUPS
-tau-t                    = DEF_TAUT
-ref-t                    = DEF_REFT
+tc-grps                  = PW_ION
+tau-t                    = 1.0
+ref-t                    = 325
 
 ; Pressure coupling:
 pcoupl                   = Parrinello-Rahman
 pcoupltype               = Isotropic
 tau-p                    = 12.0
-compressibility          = 3e-4  3e-4  3e-4 
-ref-p                    = 1.0  1.0  1.0 
+compressibility          = 3e-4 
+ref-p                    = 1.0 
 nstpcouple               = 10
 
 ; GENERATE VELOCITIES FOR STARTUP RUN:

@@ -1,6 +1,6 @@
 integrator               = md
 dt                       = 0.02 
-nsteps                   = 10000000
+nsteps                   = 2500000
 
 nstxout                  = 0   
 nstvout                  = 0
@@ -30,7 +30,7 @@ tau-t                    = 1.0
 ref-t                    = 325
 
 ; Pressure coupling:
-pcoupl                   = Parrinello-Rahman
+pcoupl                   = Berendsen
 pcoupltype               = Isotropic
 tau-p                    = 12.0
 compressibility          = 3e-4  
