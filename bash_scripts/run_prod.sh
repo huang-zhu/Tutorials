@@ -46,7 +46,7 @@ TPR=${CURRENT}/${CURRENT}.tpr
 RMAX=4 # nm
 BIN_SIZE=0.01 # nm
 
-XVG=${RDF_DIR}/W_W.xvg
+XVG=${RDF_DIR}/W-W.xvg
 ${GMX} rdf -f ${XTC} \
            -s ${TPR} \
            -rmax ${RMAX} \
@@ -56,7 +56,7 @@ name W
 name W
 INPUTS
            
-XVG=${RDF_DIR}/NACL_W.xvg
+XVG=${RDF_DIR}/NACL-W.xvg
 ${GMX} rdf -f ${XTC} \
            -s ${TPR} \
            -rmax ${RMAX} \
@@ -66,7 +66,7 @@ name NA CL
 name W
 INPUTS
 
-XVG=${RDF_DIR}/NA_NA.xvg
+XVG=${RDF_DIR}/NA-NA.xvg
 ${GMX} rdf -f ${XTC} \
            -s ${TPR} \
            -rmax ${RMAX} \
@@ -76,7 +76,7 @@ name NA
 name NA
 INPUTS
 
-XVG=${RDF_DIR}/NA_CL.xvg
+XVG=${RDF_DIR}/NA-CL.xvg
 ${GMX} rdf -f ${XTC} \
            -s ${TPR} \
            -rmax ${RMAX} \

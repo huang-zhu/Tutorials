@@ -16,21 +16,19 @@ class parserNP:
     pass
 core = parserNP()
 parser = argparse.ArgumentParser()
-parser.add_argument('--datafilepath')
+parser.add_argument('--datafile_path')
 args = parser.parse_args()
 
-datafilepath = args.datafilepath
+datafile_path = args.datafilepath
 
-# datafilepath = '//wsl.localhost/Ubuntu-20.04/home/huangzhu/Tutorials/1_WaterBox/WaterBox/rep_1/md'
-
-pairs = ['W-W','NA CL-W','NA-NA','NA-CL']
+pairs = ['W-W','NACL-W','NA-NA','NA-CL']
 
 nrows, ncols = 2, 2
 fig, ax = plt.subplots( nrows=nrows, ncols=ncols, figsize=(8,8) )
 row, col = 0, 0
 for pair in pairs: 
     
-    datafile = datafilepath + '/rdf_' + pair + '.xvg'
+    datafile = datafile_path + '/' + pair + '.xvg'
     data = np.loadtxt( datafile, comments=['#','@'] )
 
     ax[row, col].plot(data[:,0],
@@ -55,8 +53,8 @@ for pair in pairs:
 
     col += 1
     if col == 2: 
-        row += 1
-        col = 0
+       row += 1
+       col = 0
     
 fig.savefig('plot_rdf.png', bbox_inches = 'tight', dpi=800)
 
