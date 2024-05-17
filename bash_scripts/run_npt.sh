@@ -4,6 +4,7 @@
 GMX="$(which gmx)"
 
 ### PREPARE NPT DIRECTORY
+NSTEPS=1000
 CURRENT=npt
 mkdir -p ${CURRENT} 
 
@@ -23,12 +24,12 @@ for ((i=1; i<=20; i++)); do #echo $(awk "BEGIN {print $i / 1000}" | awk '{ print
         sed -i /'continuation '/s/yes/no/g input_files/${CURRENT}_warmup.mdp
 
         ${GMX} grompp -f input_files/${CURRENT}_warmup.mdp \
-                    -c ${PREV}/${PREV}.gro \
-                    -p input_files/topology.top \
-                    -n input_files/index.ndx \
-                    -po ${CURRENT}/mdout_${CURRENT}_warmup_$dt.mdp \
-                    -o ${CURRENT}/${CURRENT}_warmup_$dt.tpr \
-                    -maxwarn 1
+                      -c ${PREV}/${PREV}.gro \
+                      -p input_files/topology.top \
+                      -n input_files/index.ndx \
+                      -po ${CURRENT}/mdout_${CURRENT}_warmup_$dt.mdp \
+                      -o ${CURRENT}/${CURRENT}_warmup_$dt.tpr \
+                      -maxwarn 1
     elif [ "$i" -gt 1 ]; then
         PREV_dt=$(awk "BEGIN {print $(($i-1)) / 1000}" | awk '{ printf("%.3f\n", $1) }')
         PREV=${CURRENT}_warmup_$PREV_dt
@@ -39,12 +40,12 @@ for ((i=1; i<=20; i++)); do #echo $(awk "BEGIN {print $i / 1000}" | awk '{ print
         sed -i /'continuation '/s/no/yes/g input_files/${CURRENT}_warmup.mdp
 
         ${GMX} grompp -f input_files/${CURRENT}_warmup.mdp \
-                    -c ${CURRENT}/${PREV}.gro \
-                    -p input_files/topology.top \
-                    -n input_files/index.ndx \
-                    -po ${CURRENT}/mdout_${CURRENT}_warmup_$dt.mdp \
-                    -o ${CURRENT}/${CURRENT}_warmup_$dt.tpr \
-                    -maxwarn 1
+                      -c ${CURRENT}/${PREV}.gro \
+                      -p input_files/topology.top \
+                      -n input_files/index.ndx \
+                      -po ${CURRENT}/mdout_${CURRENT}_warmup_$dt.mdp \
+                      -o ${CURRENT}/${CURRENT}_warmup_$dt.tpr \
+                      -maxwarn 1
     fi
 
     ### RUN WARMUP EQUIL
