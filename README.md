@@ -1,4 +1,4 @@
-Coarse-grained water box
+# Coarse-grained water box
 
 In this tutorial, we will perform a coarse-grained simulation of a 0.4 M solution of NaCl. We will be using the MARTINI coarse-grained force field and its refined polarizable water model. 
 
