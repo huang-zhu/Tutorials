@@ -7,8 +7,16 @@ Created on Mon Sep 11 15:14:29 2023
 
 import numpy as np
 import matplotlib.pyplot as plt
+from matplotlib.ticker import (MultipleLocator, AutoMinorLocator)
+from matplotlib import rc
 import matplotlib as mpl
-mpl.rcParams['font.family'] = 'Arial'
+from matplotlib import mathtext
+plt.rcParams.update({
+    'text.usetex':False,
+    'font.family':'Arial',
+    'font.sans-serif':['Arial'],
+    'mathtext.default':'regular',
+    })
 import os
 from matplotlib.ticker import (MultipleLocator, AutoMinorLocator)
 from mpl_toolkits.axes_grid1.inset_locator import inset_axes
@@ -32,14 +40,18 @@ def getDistancesWithPBC_XYZ(positions_i, positions_j, size_box):
     distances[:,:,2] += ( distances[:,:,2]  <  -size_box[2]/2 )*size_box[2]
     return(distances)
 
-# Specify a base path
-BASE_PATH = '//wsl.localhost/Ubuntu-20.04/home/huangzhu/Tutorials'
-# Specify the replica path
-REP_DIR = BASE_PATH + '/1_CG_WaterBox/WaterBox/rep_0'
+import argparse
+class parserNP:
+    pass
+core = parserNP()
+parser = argparse.ArgumentParser()
+parser.add_argument('--datafile_path')
+args = parser.parse_args()
+datafile_path = args.datafile_path
 
 # Specify input files for the structure (GRO) and trajectory (XTC) to analyze
-input_GRO = REP_DIR + '/md/md.gro'
-input_XTC = REP_DIR + '/md/md.xtc'
+input_GRO = datafile_path + '/md.gro'
+input_XTC = datafile_path + '/md.xtc'
 
 # Load the structure and its trajectory
 traj = md.load(input_XTC, top=input_GRO)
@@ -106,19 +118,13 @@ for frame in range(md_num_frames):
 # Compute average g(r)
 g_r_mean = np.average(g_r, axis=0)
 
-# Compute standard devation
-g_r_std  = np.std(g_r, axis=0, ddof=1)
-
 # Plot RDF
 nrows, ncols = 1, 1
 fig, ax = plt.subplots(nrows=nrows, ncols=ncols, figsize=(4,4))
 ax.plot(r, g_r_mean)
-ax.fill_between( r,
-                 g_r_mean - g_r_std,
-                 g_r_mean + g_r_std,
-                 alpha=0.4
-                 )
+
 ax.set_xlim(0,2)
+fig.savefig(datafile_path + '/plot_rdf.png', bbox_inches = 'tight', dpi=800)
 
 
 

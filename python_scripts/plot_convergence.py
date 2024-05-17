@@ -39,6 +39,7 @@ ax.set_xlabel('Simulation Time (ps)')
 ax.set_ylabel('Temperature (K)')
 fig.savefig('plot_convergence_temperature.png', bbox_inches = 'tight', dpi=800)
 fig.tight_layout()
+print("\n=== GENERATED TEMPERATURE TIMESERIES ===\n")
 
 ### PLOT PRESSURE TIMESERIES
 fig, ax = plt.subplots( nrows=nrows, ncols=ncols, figsize=(4,4) )
@@ -48,6 +49,7 @@ ax.set_xlabel('Simulation Time (ps)')
 ax.set_ylabel('Pressure (bar)')
 fig.savefig('plot_convergence_pressure.png', bbox_inches = 'tight', dpi=800)
 fig.tight_layout()
+print("\n=== GENERATED PRESSURE TIMESERIES ===\n")
 
 ### PLOT DENSITY TIMESERIES
 fig, ax = plt.subplots( nrows=nrows, ncols=ncols, figsize=(4,4) )
@@ -57,3 +59,4 @@ ax.set_xlabel('Simulation Time (ps)')
 ax.set_ylabel('Density (kg/m${^3}$)')
 fig.savefig('plot_convergence_density.png', bbox_inches = 'tight', dpi=800)
 fig.tight_layout()
+print("\n=== GENERATED DENSITY TIMESERIES ===\n")
