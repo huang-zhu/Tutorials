@@ -1,0 +1,11 @@
+#include "martini_v2.3refP_PEO.itp" 
+#include "ions.itp" 
+[ system ]
+; name
+Polarizable Water Box
+
+[ molecules ]
+; name  number
+PW 485
+NA 16
+CL 16
