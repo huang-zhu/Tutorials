@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ### DEFINE BINARIES
-GMX="$(which gmx)"
+GMX="$(type -P gmx)"
 
 ### PREPARE NPT DIRECTORY
 PREV=npt

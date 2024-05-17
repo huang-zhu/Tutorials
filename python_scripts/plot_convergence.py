@@ -8,9 +8,16 @@ Created on Sat Sep  9 20:56:00 2023
 import os
 import numpy as np
 import matplotlib.pyplot as plt
+from matplotlib.ticker import (MultipleLocator, AutoMinorLocator)
+from matplotlib import rc
 import matplotlib as mpl
-mpl.rcParams['font.family'] = 'Arial'
-
+from matplotlib import mathtext
+plt.rcParams.update({
+    'text.usetex':False,
+    'font.family':'Arial',
+    'font.sans-serif':['Arial'],
+    'mathtext.default':'regular',
+    })
 import argparse
 class parserNP:
     pass
@@ -47,6 +54,6 @@ fig, ax = plt.subplots( nrows=nrows, ncols=ncols, figsize=(4,4) )
 ax.plot(data[:,0],
         data[:,3])
 ax.set_xlabel('Simulation Time (ps)')
-ax.set_ylabel('Density (kg/m{^3})')
+ax.set_ylabel('Density (kg/m${^3}$)')
 fig.savefig('plot_convergence_density.png', bbox_inches = 'tight', dpi=800)
 fig.tight_layout()

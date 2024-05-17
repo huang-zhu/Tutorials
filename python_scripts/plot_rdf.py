@@ -41,7 +41,7 @@ for pair in pairs:
     xticks = np.arange(0, 2.5, 0.5)
     ax[row, col].set_xticks(xticks)
     if pair == 'W-W':       yticks = np.arange(0, 5, 1)
-    elif pair == 'NA CL-W': yticks = np.arange(0, 5, 1)
+    elif pair == 'NACL-W': yticks = np.arange(0, 5, 1)
     elif pair == 'NA-NA':   yticks = np.arange(0, 2, 0.5)
     elif pair == 'NA-CL':   yticks = np.arange(0, 10, 2)
     ax[row, col].set_yticks(yticks)

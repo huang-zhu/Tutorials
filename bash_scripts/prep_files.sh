@@ -24,7 +24,7 @@ cp -rv ${MAIN_PATH}/inputs/molecules/* ${INPUT_FILES_PATH}
 cp -rv ${MAIN_PATH}/bash_scripts/*     ${INPUT_FILES_PATH}/../
 
 ### DEFINE BINARIES
-GMX="$(which gmx)"
+GMX="$(type -P gmx)"
 
 ### DEFINE SYSTEM PARAMETERS
 NUM_PW=485

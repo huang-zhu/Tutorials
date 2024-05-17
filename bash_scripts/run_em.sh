@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ### DEFINE BINARIES
-GMX="$(which gmx)"
+GMX="$(type -P gmx)"
 
 ### PREPARE EM DIRECTORY
 CURRENT=em
@@ -16,7 +16,7 @@ ${GMX} grompp -f input_files/em.mdp \
               -maxwarn 1 
 
 ### RUN EM
-${GMX} mdrun -v -deffnm ${CURRENT}/${CURRENT}
+${GMX} mdrun -v -deffnm ${CURRENT}/${CURRENT} -ntmpi 1
 
 ### ANALYZE
 ${GMX} energy -f ${CURRENT}/${CURRENT}.edr \
