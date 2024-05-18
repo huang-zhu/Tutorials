@@ -8,14 +8,14 @@ The purpose of this tutorial is to perform  inexpensive simulations that do not 
 ```
 ### DEFINE TUTORIAL AND ITS DIRECTORY
 TUTORIAL=CG_WaterBox
-TUTORIAL_DIR=github/Tutorials/${TUTORIAL}
+TUTORIAL_DIR=Tutorials/${TUTORIAL}
 
 ### GENERATE THE DIRECTORY AND GO INTO IT
 mkdir -p ${TUTORIAL_DIR}
 cd ${TUTORIAL_DIR}
 
-### CLONE THE TUTORIAL FROM THIS GITHUB
-git clone -b ${TUTORIAL} https://github.com/huang-zhu/Tutorials
+### CLONE THE TUTORIAL FROM THIS REPO
+git clone -b ${TUTORIAL} https://github.com/huang-zhu/Tutorials.git ./
 ```
 ## PREPARE FILES
 
