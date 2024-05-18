@@ -31,10 +31,20 @@ data = np.loadtxt( datafile, comments=['#','@'] )
 
 nrows, ncols = 1, 1
 
-### PLOT TEMPERATURE TIMESERIES
+### PLOT POTENTIAL ENERGY TIMESERIES
 fig, ax = plt.subplots( nrows=nrows, ncols=ncols, figsize=(4,4) )
 ax.plot(data[:,0],
         data[:,1])
+ax.set_xlabel('Simulation Time (ps)')
+ax.set_ylabel('Potential Energy (kJ/mol)')
+fig.savefig('plot_convergence_potentialEnergy.png', bbox_inches = 'tight', dpi=800)
+fig.tight_layout()
+print("\n=== GENERATED POTENTIAL ENERGY TIMESERIES ===\n")
+
+### PLOT TEMPERATURE TIMESERIES
+fig, ax = plt.subplots( nrows=nrows, ncols=ncols, figsize=(4,4) )
+ax.plot(data[:,0],
+        data[:,2])
 ax.set_xlabel('Simulation Time (ps)')
 ax.set_ylabel('Temperature (K)')
 fig.savefig('plot_convergence_temperature.png', bbox_inches = 'tight', dpi=800)
@@ -44,7 +54,7 @@ print("\n=== GENERATED TEMPERATURE TIMESERIES ===\n")
 ### PLOT PRESSURE TIMESERIES
 fig, ax = plt.subplots( nrows=nrows, ncols=ncols, figsize=(4,4) )
 ax.plot(data[:,0],
-        data[:,2])
+        data[:,3])
 ax.set_xlabel('Simulation Time (ps)')
 ax.set_ylabel('Pressure (bar)')
 fig.savefig('plot_convergence_pressure.png', bbox_inches = 'tight', dpi=800)
@@ -54,7 +64,7 @@ print("\n=== GENERATED PRESSURE TIMESERIES ===\n")
 ### PLOT DENSITY TIMESERIES
 fig, ax = plt.subplots( nrows=nrows, ncols=ncols, figsize=(4,4) )
 ax.plot(data[:,0],
-        data[:,3])
+        data[:,4])
 ax.set_xlabel('Simulation Time (ps)')
 ax.set_ylabel('Density (kg/m${^3}$)')
 fig.savefig('plot_convergence_density.png', bbox_inches = 'tight', dpi=800)
