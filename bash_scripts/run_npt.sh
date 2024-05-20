@@ -1,11 +1,18 @@
 #!/bin/bash
 
+### IDENTIFY CUDA DEVICES
+CUDA=$(nvidia-smi --query-gpu=name --format=csv,noheader | wc -l)
+
 ### DEFINE BINARIES
 GMX="$(type -P gmx)"
 
-### PREPARE NPT DIRECTORY
+### DEFINE ARGUMENTS
 NSTEPS=1000
 CURRENT=npt
+GMX_MDRUN_FLAGS="-v -ntmpi 1 "
+if [ "$CUDA" -gt 0 ]; then GMX_MDRUN_FLAGS+="-update gpu "; fi
+
+### PREPARE NPT DIRECTORY
 mkdir -p ${CURRENT} 
 
 ### WARMUP EQUILIBRATION TO SOFTLY RELEASE SYSTEM
@@ -49,7 +56,7 @@ for ((i=1; i<=20; i++)); do #echo $(awk "BEGIN {print $i / 1000}" | awk '{ print
     fi
 
     ### RUN WARMUP EQUIL
-    ${GMX} mdrun -v -deffnm ${CURRENT}/${CURRENT}_warmup_$dt -ntmpi 1
+    ${GMX} mdrun ${GMX_MDRUN_FLAGS} -deffnm ${CURRENT}/${CURRENT}_warmup_$dt
     
     ### CLEAN-UP
     rm -rv ${CURRENT}/*.tpr ${CURRENT}/*.xtc ${CURRENT}/*.cpt ${CURRENT}/*.edr ${CURRENT}/*.mdp
@@ -69,7 +76,7 @@ ${GMX} grompp -f input_files/${CURRENT}.mdp \
               -maxwarn 1
 
 ### RUN FULL EQUIL
-${GMX} mdrun -v -deffnm ${CURRENT}/${CURRENT} -ntmpi 1 -update gpu
+${GMX} mdrun ${GMX_MDRUN_FLAGS} -deffnm ${CURRENT}/${CURRENT} 
 
 ### CENTER TRAJECTORIES
 ${GMX} trjconv -f ${CURRENT}/${CURRENT}.gro \

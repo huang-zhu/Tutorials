@@ -1,11 +1,18 @@
 #!/bin/bash
 
+### IDENTIFY CUDA DEVICES
+CUDA=$(nvidia-smi --query-gpu=name --format=csv,noheader | wc -l)
+
 ### DEFINE BINARIES
 GMX="$(type -P gmx)"
 
-### PREPARE NPT DIRECTORY
-PREV=npt
+### DEFINE ARGUMENTS
+NSTEPS=npt
 CURRENT=prod
+GMX_MDRUN_FLAGS="-v -ntmpi 1 "
+if [ "$CUDA" -gt 0 ]; then GMX_MDRUN_FLAGS+="-update gpu "; fi
+
+### PREPARE PROD DIRECTORY
 mkdir -p ${CURRENT} 
 
 ### GENERATE TPR
@@ -18,7 +25,7 @@ ${GMX} grompp -f input_files/${CURRENT}.mdp \
               -maxwarn 1
 
 ### RUN PRODUCTION
-${GMX} mdrun -v -deffnm ${CURRENT}/${CURRENT} -ntmpi 1 -update gpu
+${GMX} mdrun ${GMX_MDRUN_FLAGS} -deffnm ${CURRENT}/${CURRENT} 
 
 ### CENTER TRAJECTORIES
 ${GMX} trjconv -f ${CURRENT}/${CURRENT}.gro \
