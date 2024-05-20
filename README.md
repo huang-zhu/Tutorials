@@ -72,6 +72,7 @@ cd npt/
 python3.10 ${PYTHON_SCRIPTS_PATH}/plot_convergence.py --datafile energy.xvg
 cd ../
 ```
+![plots_equilibration_convergence](https://github.com/huang-zhu/Tutorials/assets/98200265/e8bd2414-a456-45d6-9a56-9bf010cb209e)
 
 
 ## PRODUCTION RUN
