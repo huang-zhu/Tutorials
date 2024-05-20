@@ -16,8 +16,10 @@ CONTAINER_IMAGE="huangzhu/github:Tutorials_2.0"
 
 ### GENERATE THE DIRECTORY AND GO INTO IT
 mkdir -p ${TUTORIAL_PATH}
+```
 
-### RUN CONTAINER INTERACTIVELY 
+## RUN CONTAINER INTERACTIVELY 
+```
 docker run -v ${TUTORIAL_PATH}:${TUTORIAL_PATH} \
            -w ${TUTORIAL_PATH} \
            -e TUTORIAL=${TUTORIAL} \
@@ -27,35 +29,46 @@ docker run -v ${TUTORIAL_PATH}:${TUTORIAL_PATH} \
            -it \
            --rm \
            ${CONTAINER_IMAGE} 
+```
 
-### CLONE THE TUTORIAL FROM THIS GITHUB
+## CLONE THE TUTORIAL FROM THIS GITHUB
+```
 git clone -b ${TUTORIAL} https://github.com/huang-zhu/Tutorials.git \
            ./
-
+```
 ## PREPARE FILES
+```
 bash bash_scripts/prep_files.sh
 cd WaterBox
+```
 This will create WaterBox dir with input_files/ and SH scripts (em,npt,prod)
 
 ## ENERGY MINIMIZATION
+```
 bash run_em.sh
+```
 This will create em/ dir with energy minimzed box of 0.4 M NaCl in Water
 
 ## NPT EQUILIBRATION
+```
 bash run_npt.sh
 cd npt/
 python3.10 ${PYTHON_SCRIPTS_PATH}/plot_convergence.py --datafile energy.xvg
 cd ../
+```
 
 ## PRODUCTION RUN
+```
 bash run_prod.sh
 cd prod
 python3.10 ${PYTHON_SCRIPTS_PATH}/plot_convergence.py --datafile energy.xvg
 cd rdf
 python3.10 ${PYTHON_SCRIPTS_PATH}/plot_rdf.py --datafile_path ./
 cd ../../
+```
 
 ## ANALYSIS (OPTIONAL)
+```
 cd prod
 python3.10 ${PYTHON_SCRIPTS_PATH}/analyze_python_rdf.py --datafile_path ./
 ```
