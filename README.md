@@ -72,22 +72,43 @@ cd npt/
 python3.10 ${PYTHON_SCRIPTS_PATH}/plot_convergence.py --datafile energy.xvg
 cd ../
 ```
-![plots_equilibration_convergence](https://github.com/huang-zhu/Tutorials/assets/98200265/e8bd2414-a456-45d6-9a56-9bf010cb209e)
-
+<p align="center">
+  <img src=https://github.com/huang-zhu/Tutorials/assets/98200265/e8bd2414-a456-45d6-9a56-9bf010cb209e>
+</p>
 
 ## PRODUCTION RUN
 ```
 bash run_prod.sh
 cd prod
 python3.10 ${PYTHON_SCRIPTS_PATH}/plot_convergence.py --datafile energy.xvg
+```
+<p align="center">
+  <img src=https://github.com/huang-zhu/Tutorials/assets/98200265/281be24a-3090-4e94-8324-4079ac70d15e>
+</p>
+
+Additionally, ``gmx rdf`` is used to compute the radial distribution functions for four pairs.:
+```
 cd rdf
 python3.10 ${PYTHON_SCRIPTS_PATH}/plot_rdf.py --datafile_path ./
 cd ../../
 ```
+<p align="center">
+  <img width="800" height="800" src=https://github.com/huang-zhu/Tutorials/assets/98200265/0124b819-baf3-46fc-948f-dc13eead6f88>
+</p>
+
+
 
 ## ANALYSIS (OPTIONAL)
 ```
 cd prod
 python3.10 ${PYTHON_SCRIPTS_PATH}/analyze_python_rdf.py --datafile_path ./
 ```
+<p align="center">
+  <img width="400" height="400" src=https://github.com/huang-zhu/Tutorials/assets/98200265/36634daf-f015-45d5-a206-fb2db018be99>
+</p>
+
+
+
+
+
 
