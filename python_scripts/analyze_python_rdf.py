@@ -4,7 +4,7 @@ Created on Mon Sep 11 15:14:29 2023
 
 @author: huangzhu
 """
-multi = True
+multi = False
 
 if not multi:
     print("\n=== ANALYZING IN SERIAL ===")
