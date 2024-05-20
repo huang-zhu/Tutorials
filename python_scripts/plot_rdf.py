@@ -41,8 +41,8 @@ for pair in pairs:
                       data[:,1],
                       label=pair)
     ax[row, col].legend()
-    ax[row, col].set_xlabel('$r$ (nm)')
-    ax[row, col].set_ylabel('$g(r)$')
+    ax[row, col].set_xlabel('$\mathit{r}$ (nm)')
+    ax[row, col].set_ylabel('$\mathit{g(r)}$')
     
     xticks = np.arange(0, 2.5, 0.5)
     ax[row, col].set_xticks(xticks)
