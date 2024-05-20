@@ -50,8 +50,8 @@ args = parser.parse_args()
 datafile_path = args.datafile_path
 
 # Specify input files for the structure (GRO) and trajectory (XTC) to analyze
-input_GRO = datafile_path + '/md.gro'
-input_XTC = datafile_path + '/md.xtc'
+input_GRO = datafile_path + '/prod.gro'
+input_XTC = datafile_path + '/prod.xtc'
 
 # Load the structure and its trajectory
 traj = md.load(input_XTC, top=input_GRO)
@@ -84,6 +84,7 @@ counts = np.zeros(len(radii))
 # Specify variables to use for plotting
 g_r = np.zeros([md_num_frames, len(radii[0])])
 r   = radii[0]
+pair = 'W-W'
 for frame in range(md_num_frames):
     print("Analyzing frame " + str(frame))
     
