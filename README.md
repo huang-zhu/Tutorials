@@ -50,7 +50,7 @@ git clone -b ${TUTORIAL} https://github.com/huang-zhu/Tutorials.git \
 ```
 
 ## PREPARE FILES
-We can now run the script that will prepare the initial files to run energy minimization. We will prepare a 125 nm<sup>3</sup> cubic box with 485 molecules of water and 16 molecules of sodium chloride to achieve a 0.4 M NaCL solution. The box will be generated using ``gmx insert-molecules``. In addition, the topology file and an index file will be generated. 
+We can now run the script that will prepare the initial files to run energy minimization. We will prepare a 125 nm<sup>3</sup> cubic box with 485 molecules of water and 16 molecules of sodium chloride to achieve a ~0.4 M NaCL solution. The box will be generated using ``gmx insert-molecules``. In addition, the topology file and an index file will be generated. 
 ```
 bash bash_scripts/prep_files.sh
 cd WaterBox
@@ -58,18 +58,21 @@ cd WaterBox
 The ``Waterbox/`` directory was created and everything else will be run from this directory. Inside, there are ``.sh`` files that run the different steps of the tutorial (energy minimization, equilibration, production), and there's the ``input_files/`` directory that contains the essential files needed to run GROMACS. 
 
 ## ENERGY MINIMIZATION
+Inside the ``WaterBox/`` directory we can run the script that will energy minimize the system. This allows atoms to slightly shift their positions to avoid steric clashes that may lead to huge forces, which could lead to the system blowing up.
 ```
 bash run_em.sh
 ```
-This will create em/ dir with energy minimzed box of 0.4 M NaCl in Water
+The ``em/`` directory was created. Inside, there should be ``em.gro`` which is the energy minimized structure. ADditionally, there should be ``energy.xvg`` which contains the potential energy of the system throughout the energy minimization, if you plot it (not done in this tutorial) you will see that the energy decays and converges, indicating that the system is stable.
 
 ## NPT EQUILIBRATION
+We can now run the equilibration script. Typically, for all-atom molecular dynamics simulations, an _NPT_ equilibration is performed after an _NVT_ equilibration to allow the temperature to converge first. However, for coarse-grained simulations, the temperature converges very fast, and thus is usually skipped. We will run a 5 ns _NPT_ equilibration with the Berendsen barostat and check for convergence.
 ```
 bash run_npt.sh
 cd npt/
 python3.10 ${PYTHON_SCRIPTS_PATH}/plot_convergence.py --datafile energy.xvg
 cd ../
 ```
+
 
 ## PRODUCTION RUN
 ```
