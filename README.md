@@ -385,7 +385,9 @@ cd rdf
 python3.10 ${PYTHON_SCRIPTS_PATH}/plot_rdf.py --datafile_path ./
 cd ../../
 ```
-
+<p align="center">
+  <img width="800" height="800" src=https://github.com/huang-zhu/Tutorials/assets/98200265/0124b819-baf3-46fc-948f-dc13eead6f88>
+</p>
 
 
 
@@ -468,6 +470,9 @@ cd rdf
 python3.10 ${PYTHON_SCRIPTS_PATH}/plot_rdf.py --datafile_path ./
 cd ../../
 ```
+<p align="center">
+  <img width="800" height="800" src=https://github.com/huang-zhu/Tutorials/assets/98200265/0124b819-baf3-46fc-948f-dc13eead6f88>
+</p>
 
 # CONCLUSIONS
 Main takeaways from these RDFs:
@@ -475,9 +480,7 @@ Main takeaways from these RDFs:
 2. Ions contain 3-4 water molecules within their first solvation shell.
 3. Na contains 1 Na ion within its first solvation shell.
 4. Na contains 7-8 Cl ions within its first solvation shell.
-<p align="center">
-  <img width="800" height="800" src=https://github.com/huang-zhu/Tutorials/assets/98200265/0124b819-baf3-46fc-948f-dc13eead6f88>
-</p>
+
 
 At this point, this tutorial is essentially finished, while the remaining section is optional, so congrats on completing the tutorial and thanks for checking out my work!
 
