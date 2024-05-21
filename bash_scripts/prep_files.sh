@@ -52,6 +52,7 @@ ${GMX} insert-molecules -f ${INPUT_FILES_PATH}/init.gro \
                         -nmol ${NUM_CATION} \
                         -try 100 \
                         -o ${INPUT_FILES_PATH}/init.gro
+                        
 ### INSERT ANIONS
 ${GMX} insert-molecules -f ${INPUT_FILES_PATH}/init.gro \
                         -ci ${INPUT_FILES_PATH}/CL.gro \
