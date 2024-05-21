@@ -4,11 +4,11 @@ In this tutorial, we will perform a coarse-grained simulation of a 0.4 M solutio
 
 The purpose of this tutorial is to perform inexpensive simulations that do not require high-performance computing resources (i.e., you can run this on almost any Windows laptop). If your laptop/desktop has a dedicated NVIDIA graphics processing unit (GPU), then you will be able to complete this tutorial much faster (the scripts will detect the GPU and run accordingly). GROMACS must be installed with the correct settings depending on the availability of an NVIDIA GPU (you should have completed this before starting this tutorial).
 
-NOTE: Below are the _DETAILED METHOD_ and the _EXPRESS METHOD_ for you to follow. 
-- _DETAILED METHOD_ (Recommended for new GROMACS users):
+NOTE: Below are the _MANUAL METHOD_ and the _AUTOMATED METHOD_ for you to follow. 
+- _MANUAL METHOD_ (Recommended for new GROMACS users):
   - consists of completing the tutorial by running each line manually, this allows you to see the specific commands used and learn about the syntax used, along with running intermediate steps (_e.g._, transfer and generate files).
-- _EXPRESS METHOD_ (Recommended if you have some experience with ``bash`` and GROMACS):
-  - consists of completing the tutorial by running provided ``.sh`` scripts that combine the lines from the _DETAILED METHOD_, this allows you to automate your workflow.
+- _AUTOMATED METHOD_ (Recommended if you have some experience with ``bash`` and GROMACS):
+  - consists of completing the tutorial by running provided ``.sh`` scripts that combine the lines from the _MANUAL METHOD_, this allows you to automate your workflow.
 
 ## SET UP YOUR DIRECTORIES
 We will first define the tutorial that we are running, some paths of interest, and the container image that we will use throughout the tutorial.  
@@ -55,7 +55,7 @@ git clone -b ${TUTORIAL} https://github.com/huang-zhu/Tutorials.git \
            ./
 ```
 
-# _===== DETAILED METHOD =====_
+# _===== MANUAL METHOD =====_
 We need to first define the corresponding directories and generate them.
 ```
 MAIN_PATH=${TUTORIAL_PATH}
@@ -396,26 +396,7 @@ cd ../../
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# _===== EXPRESS METHOD =====_
+# _===== AUTOMATED METHOD =====_
 ## PREPARE FILES
 We can now run the script that will prepare the initial files to run energy minimization. We will prepare a 125 nm<sup>3</sup> cubic box with 485 molecules of water and 16 molecules of sodium chloride to achieve a ~0.4 M NaCL solution. The box will be generated using ``gmx insert-molecules``. In addition, the topology file and an index file will be generated. 
 ```
