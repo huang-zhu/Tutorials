@@ -78,7 +78,7 @@ We will be using GROMACS, and I like to define the ``GMX`` variable for ease of 
 GMX="$(type -P gmx)"
 ``` 
 
-Now, let's define our system parameters. We will then prepare a 125 nm<sup>3</sup> cubic box with 485 molecules of water and 16 molecules of sodium chloride to achieve a ~0.4 M NaCL solution. 
+Now, let's define our system parameters. We will then prepare a 125 nm<sup>3</sup> cubic box with 485 molecules of water and 16 molecules of sodium chloride to achieve a ~0.4 M NaCl solution. 
 ```
 NUM_PW=485
 NUM_CATION=16
