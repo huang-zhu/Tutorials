@@ -1,7 +1,5 @@
 #!/bin/bash
 
-### Submit from github/Tutorials/CG_WaterBox/bash_scripts: bash prep_files.sh
-
 ### DEFINE DIRECTORIES AND GENERATE
 MAIN_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )"/../ && pwd )"
 WORKING_DIR=WaterBox
