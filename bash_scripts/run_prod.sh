@@ -7,7 +7,7 @@ CUDA=$(nvidia-smi --query-gpu=name --format=csv,noheader | wc -l)
 GMX="$(type -P gmx)"
 
 ### DEFINE ARGUMENTS
-NSTEPS=npt
+PREV=npt
 CURRENT=prod
 GMX_MDRUN_FLAGS="-v -ntmpi 1 "
 if [ "$CUDA" -gt 0 ]; then GMX_MDRUN_FLAGS+="-update gpu "; fi
